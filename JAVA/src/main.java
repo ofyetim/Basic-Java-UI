@@ -15,21 +15,19 @@ class main {
 		public static  void main (String[] argv)
 		{
 			
-			JFrame jf = new JFrame();  //GORSEL ARAYUZ OLUSTURMAK ICIN JFRAME KUTUPHANESINDEN BIR NESNE OLUSTURUYORUZ
-			jf.setTitle("Final Odev"); //OLUSTURULAN PENCERENIN TITLE'I BELIRLENIYOR.
-			jf.setSize(400,400); 	   //OLUSTURULAN PENCERENIN GENISLIK VE YUKSEKLIGI BELIRLENIYOR
-			jf.setLocation(100,100);   //PENCERENIN EKRANDA BASLATILACAGI YERIN KOORDINATLARI BELIRLENIYOR
-			jf.getContentPane().setLayout(new FlowLayout()); //OLUSTURULAN PENCEREDE ELEMENTLERI GOSTERMEK VE DUZENLEMEK ICIN LAYOUT TANIMLANIYOR
+			JFrame jf = new JFrame();  
+			jf.setTitle("Final Odev"); 
+			jf.setSize(400,400); 	   
+			jf.setLocation(100,100);   
+			jf.getContentPane().setLayout(new FlowLayout()); 
 			
-			
-			
-			//COMBOBOXLAR PARAMETRE OLARAK DIZI ALIR, BU NEDENLE PROJEDE ISTENEN COMBOBOX ELEMENTLERINI TUTACAK DIZILERI OLUSTURUYORUZ
+
 			String arr1[]= {"Bir secim yapiniz", "Armstrong", "Mukemmel Sayi", "Polindromik"}; 
 			String arr2[]= {"Bir secim yapiniz","1","2","3"};
 			
 			
 			
-			// PENCEREDE KULLANILAN DIGER ELEMENTLER TANIMLANIYOR 
+
 			JButton button1 = new JButton("Hesapla"); 
 			JTextField  text1 = new JTextField(10);
 			JLabel sayiGirLabel = new JLabel("Sayi gir");
@@ -41,11 +39,10 @@ class main {
 			JTextField text2 = new JTextField(30);
 			
 			
-			text2.setEditable(false); //TEXT2' ELEMENTINDE SONUC YAZILACAGI ICIN DISARIDAN MUDEHALE EDILMESINI ENGELLEDIK.
-			label1.setVisible(false); //PROJENIN YAPILMASI SIRASINDA BAZI SONUCLARI TEST ETMEK ICIN OLUSTURULAN DEGISKEN PROJENIN SON HALINDE GOZUKMNEMESI ICIN INSIVIBLE OLARAK AYARLANDI.
+			text2.setEditable(false);
+			label1.setVisible(false); 
 			
-			
-			// YUKARIDA OLUSTURDUGUMUZ BUTTON, LABEL GIBI ELEMENTLERI EKRANDA GOZUKMESI ICIN ASAGIDAKI GIBI SIRASIYLA TANIMLIYORUZ.
+
 			jf.getContentPane().add(sayiGirLabel);
 			jf.getContentPane().add(text1);		
 			jf.getContentPane().add(cb1);
@@ -57,15 +54,15 @@ class main {
 			jf.getContentPane().add(button1);	
 			
 			
-			//BUTTON'A BASILDIGINDA CALISTIRACAGI FONKSIYONNU TANIMLANMASI.
+
 			button1.addActionListener(new ActionListener()
 					{
 						public void actionPerformed(ActionEvent e) {
-							String yazi = ""; //TEXTFIELD2'DE YAZACAK METIN ICIN OLUSTURULAN BOS STRING.
+							String yazi = ""; 
 							
-							if (cb1.getSelectedIndex()==1)//COMBOBOX1'DE SECILEN SECENEGE GORE SAYININ UZEINDE FARKLI ISLEMLER YAPILMAKTADIR.
-							{							  //BU IF KONTROLUNDE ARMSTRONG SAYISI OLUP OLMADGINI KONTROL EDIYORUZ.
-								int sayi = Integer.parseInt(text1.getText()); //TEXT1'DEN ALINAN DEGER INTEGER'A DONUSTURULUYOR KI TIP FARKINDAN DOLAYI HATA OLMASIN	.				
+							if (cb1.getSelectedIndex()==1)
+							{							 
+								int sayi = Integer.parseInt(text1.getText()); 				
 								if (Armstrong(sayi)==true) {
 									 yazi = "BU SAYI ARMSTRONG SAYISIDIR";
 								}
@@ -73,10 +70,10 @@ class main {
 								{
 									 yazi = "BU SAYI ARMSTYRONG SAYI DEGILDIR";
 								}
-								text2.setText(yazi + " " +(Integer.parseInt(text1.getText())+(cb2.getSelectedIndex()))); //TEXT2'YE SONUC YAZDIRILIYOR.
+								text2.setText(yazi + " " +(Integer.parseInt(text1.getText())+(cb2.getSelectedIndex()))); 
 				
 							}
-							else if(cb1.getSelectedIndex()==2)//BU IF KONTROLUNDE MUKEMMEL SAYI KONTROLU YAPILIYOR.
+							else if(cb1.getSelectedIndex()==2)
 							{	
 							int sayi = Integer.parseInt(text1.getText());							
 							if (MukemmelSayi(sayi)==true) {
@@ -86,12 +83,12 @@ class main {
 							{
 								 yazi = "BU SAYI MUKEMMEL SAYI DEGILDIR";
 							}
-							text2.setText(yazi + " " +(Integer.parseInt(text1.getText())+(cb2.getSelectedIndex())));//TEXT2'YE SONUC YAZDIRILIYOR.
+							text2.setText(yazi + " " +(Integer.parseInt(text1.getText())+(cb2.getSelectedIndex())));
 				
 								
 	
 							}
-							else if(cb1.getSelectedIndex()==3)//BU IF KONTROLUNDE POLIDROMIK SAYI KONTROLU YAPILIYOR.
+							else if(cb1.getSelectedIndex()==3)
 							{
 								int sayi = Integer.parseInt(text1.getText());							
 								if (Polidromik(sayi)==true) {
@@ -101,10 +98,10 @@ class main {
 								{
 									 yazi = "BU SAYI POLIDROMIK SAYI DEGILDIR";
 								}
-								text2.setText(yazi + " " +(Integer.parseInt(text1.getText())+(cb2.getSelectedIndex())));//TEXT2'YE SONUC YAZDIRILIYOR.
+								text2.setText(yazi + " " +(Integer.parseInt(text1.getText())+(cb2.getSelectedIndex())));
 							
 							}
-							else //HERHANGI BIR SEY SECILMEDIGINDE KULLANICIYA VERILEN GERI BILDIRIM.
+							else 
 							{
 								label1.setText("Bir seyler eksik veya yanlis");
 							}
@@ -113,23 +110,23 @@ class main {
 					});
 			
 			 
-			jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//PENCERENIN KAPANMA YONTEMININ BELIRLENMESI.
-			jf.setResizable(false);//PENCERENIN BOYUTUNUN ELLE DEGISTIRILMESINI ENGELLEMEK ICIN YAZILAN KOD.
-			jf.setVisible(true); //OLUSTURULAN PENCERENIN GORUNEBILIR OLMASI ICIN YAZILAN KOD. BU KISIM YAZILMAZSA OLUSTURULAN PENCERE EKRANDA GOZUKMEZ.
+			jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			jf.setResizable(false);
+			jf.setVisible(true); 
 								
 			
 		}
-		// SAYININ ARMSTRONG SAYISI OLUP OLMADIGINI KONTROL EDEN BOOLEAN FONKSIYON.
+
 		public static boolean Armstrong(int sayi)
 		{	
 			boolean arms = false;
-			int birler = sayi %10; //GIRILEN SAYININ BIRLER BASAMAGININ BULUNMASI.
-			int onlar = ((sayi%100)-birler)/10; //GIRILEN SAYININ ONLAR BASAMAGININ BULUNMASI.
-			int yuzler = ((sayi%1000)-onlar)/100;//GIRILEN SAYININ YUZLER BASAMAGININ BULUNMASI.
+			int birler = sayi %10; 
+			int onlar = ((sayi%100)-birler)/10; 
+			int yuzler = ((sayi%1000)-onlar)/100;
 			
-			//BULUNAN BIRLER, ONLAR VE YUZLER BASAMAKLARINDAKI SAYILARIN KUPLERININ ALINMASI VE TOPLANMASI.
+			
 			int yeniSayi = (int) Math.pow(birler, 3)+(int) Math.pow(onlar, 3)+(int) Math.pow(yuzler, 3);
-			//RAKAMLARIN KUPLERININ TOPLMAMININ GIRILEN SAYI ILE ESIT OLUP OLMADIGININ KONTROL EDILMESI.
+			
 			if (yeniSayi == sayi)
 			{
 				arms = true;
@@ -142,19 +139,19 @@ class main {
 			return arms;
 		}
 		
-		//GIRILEN SAYININ MUKEMMEL SAYI OLUP OLMADIGINI KONTROL EDEN FONKSIYON.
+
 		public static boolean MukemmelSayi(int sayi)
 		{	int toplam =0;
 			boolean sonuc = false;
-		//1'DEN BASLAYIP BELIRLENEN SAYIYA KADAR 1 ARTTIRILAN DONGU.
+
 		for (int i=1; i<sayi; i++)
 		{	
-			//EGER GIRILEN SAYI 'I' DEGERINE TAM BOLUNUYORSA TOPLAM DEGERINE EKLENIR, BOLUNMUYORSA DONGU DEVAM EDER.
+		
 			if(sayi%i==0)
 			{
 				toplam = toplam+i;
 			}
-		}	// GIRILAN SAYI ILE BU SAYIYA TAM BOLUNEN DEGERLERIN TOPLAMLARI BIRBIRINE ESITSE SONUC DEGERI TRUE OLARAK ATANIR.
+		}	 
 			if(sayi==toplam)
 			{
 				sonuc=true;
@@ -168,7 +165,7 @@ class main {
 		}
 		
 		
-		//SAYININ POLIDROMIK OLUP OLMADIGINI KONTROL EDEN FONKSIYON
+		
 		public static boolean Polidromik(int sayi)
 		{
 			boolean sonuc = false;
@@ -176,7 +173,7 @@ class main {
 			{
 				sonuc = false;
 			}
-			//FONKSIYON ICINDE KULLANILACAK LOCAL DEGISKENLER
+		
 			int reversedInteger=0;
 			int lastDigit = 0;
 			int temp=sayi;
@@ -187,7 +184,7 @@ class main {
 				reversedInteger= reversedInteger*10+lastDigit;
 				temp=temp/10;
 			}
-			// GIRILEN SAYI VE O SAYININ TERS CEVRILMIS HALI BIRBINIRNE ESITSE BOOLEAN SONUC DEGERI TRUE OLARAK ATANIYOR.
+		
 			if (sayi== reversedInteger)
 			{
 				sonuc=true;
